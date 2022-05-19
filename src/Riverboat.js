@@ -217,9 +217,7 @@ export default class Riverboat extends Component {
 					{'(riverboat)'}
 					</Typography>
 					<Typography align="center" variant="h5" component="h2" gutterBottom>
-					{'prediction aggregator '} <br/><br/>
-					{'Add and remove players from the prediction circle. '} <br/>
-					{'Create or generate certainties for each outcome to see payouts.'}
+					{'prediction aggregator '} <br/>
 					</Typography>
 				</Container>
 
