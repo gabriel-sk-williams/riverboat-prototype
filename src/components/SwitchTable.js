@@ -3,7 +3,7 @@ import { Container, Table, TableBody,
     TableCell, TableContainer, TableHead, 
     TableRow, Typography, Paper } from '@mui/material';
 import CasinoIcon from '@mui/icons-material/Casino';
-import { primary } from './theme.js';
+import { primary } from '../util/theme.js';
 import { grey, pink, blueGrey } from '@mui/material/colors';
 
 export default class SwitchTable extends Component {

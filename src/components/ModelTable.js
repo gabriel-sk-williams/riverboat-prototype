@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CasinoIcon from '@mui/icons-material/Casino';
-import { primary, grey } from './theme.js';
+import { primary, grey } from '../util/theme.js';
 
 export default class ModelTable extends Component {
 

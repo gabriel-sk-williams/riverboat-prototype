@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
-import { primary, info, grey } from './theme.js';
+import { primary, info, grey } from '../util/theme.js';
 
 export default class Orb extends Component {
 	

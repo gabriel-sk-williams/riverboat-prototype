@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from '@mui/material/Card';
 import { RemoveCircleOutline } from '@mui/icons-material';
-import { error, grey } from './theme.js';
+import { error, grey } from '../util/theme.js';
 
 export default class Minus extends Component {
 

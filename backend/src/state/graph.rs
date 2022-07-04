@@ -15,7 +15,7 @@ impl State {
         Ok(Self { client: graph })
     }
     
-    /// Access the mongodb client.
+    /// Access the neo4j client.
     pub fn neo(&self) -> &Arc<Graph> {
         &self.client
     }

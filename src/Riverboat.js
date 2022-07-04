@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { Component } from "react";
-import SwitchTable from './SwitchTable.js';
-import Orb from './Orb.js';
-import Minus from './Minus.js';
-import StickyFooter from './StickyFooter.js';
+import SwitchTable from './components/SwitchTable.js';
+import Orb from './components/Orb.js';
+import Minus from './components/Minus.js';
+import StickyFooter from './components/StickyFooter.js';
 
 import { Switch, Grid, Typography, Container } from '@mui/material/';
 import { AddCircleOutline } from '@mui/icons-material';
 import { defaultHeader, defaultEvent, defaultCircle, defaultSpace } from './util/defaults.js';
-import { success, grey } from './theme.js';
+import { success, grey } from './util/theme.js';
+import { server_url } from './util/config.js';
 
 export default class Riverboat extends Component {
 	constructor(props) {
@@ -25,11 +26,11 @@ export default class Riverboat extends Component {
     }
 
 	componentDidMount() {
-		let urlEvent = "http://localhost:7878/event/" + defaultSpace.uuid;
-		let urlJoined = "http://localhost:7878/joined/" + defaultCircle.uuid;
-		let urlModels = "http://localhost:7878/models/" + defaultSpace.uuid;
-		let urlSpace = "http://localhost:7878/space/" + defaultSpace.uuid;
-		let urlPayouts = "http://localhost:7878/payouts/" + defaultSpace.uuid;
+		const urlEvent = `${server_url}/event/${defaultSpace.uuid}`;
+		const urlJoined = `${server_url}/joined/${defaultCircle.uuid}`;
+		const urlModels = `${server_url}/models/${defaultSpace.uuid}`;
+		const urlSpace = `${server_url}/space/${defaultSpace.uuid}`;
+		const urlPayouts = `${server_url}/payouts/${defaultSpace.uuid}`;
 
 		Promise.all([
 			axios.get(urlEvent, { headers: defaultHeader }),
@@ -49,13 +50,13 @@ export default class Riverboat extends Component {
 	}
 
 	deleteModel = (name) => { // when clicking orb
-		let { activeSpace } = this.state;
-		let { uuid } = activeSpace;
-		let nameSpace = { name, suuid: uuid };
-		let urlDelete = "http://localhost:7878/delete_model";
-		let urlCalc = "http://localhost:7878/calc";
-		let urlModels = "http://localhost:7878/models/" + uuid;
-		let urlPayouts ="http://localhost:7878/payouts/" + uuid;
+		const { activeSpace } = this.state;
+		const { uuid } = activeSpace;
+		const nameSpace = { name, suuid: uuid };
+		const urlDelete = `${server_url}/delete_model`;
+		const urlCalc = `${server_url}/calc`;
+		const urlModels = `${server_url}/models/${uuid}`;
+		const urlPayouts = `${server_url}/payouts/${uuid}`;
 
 		axios.post(urlDelete, nameSpace, { headers: defaultHeader })
 		.then(res => { 
@@ -75,13 +76,13 @@ export default class Riverboat extends Component {
 	}
 
 	genRandomModel = (name, risk) => {
-		let { activeSpace } = this.state;
-		let { uuid, pattern } = activeSpace;
-		let params = { name, risk, uuid, pattern };
-		let urlGen = "http://localhost:7878/gen_random";
-		let urlCalc = "http://localhost:7878/calc";
-		let urlModels = "http://localhost:7878/models/" + uuid;
-		let urlPayouts ="http://localhost:7878/payouts/" + uuid;
+		const { activeSpace } = this.state;
+		const { uuid, pattern } = activeSpace;
+		const params = { name, risk, uuid, pattern };
+		const urlGen = `${server_url}/gen_random`;
+		const urlCalc = `${server_url}/calc`;
+		const urlModels = `${server_url}/models/${uuid}`;
+		const urlPayouts =`${server_url}/payouts/${uuid}`;
 
 		axios.post(urlGen, params, { headers: defaultHeader })
 		.then(res => { 
@@ -107,13 +108,13 @@ export default class Riverboat extends Component {
 	
 	// writes connection to graph
 	toggleJoined = (name, joined) => {
-		let cuuid = this.state.activeCircle.uuid;
-		let urlToggle = joined
-			? "http://localhost:7878/leave" 
-			: "http://localhost:7878/join";
+		const cuuid = this.state.activeCircle.uuid;
+		const urlToggle = joined
+			? `${server_url}/leave` 
+			: `${server_url}/join`;
 
-		let link = { name, cuuid };
-		let urlJoined = "http://localhost:7878/joined/" + cuuid;
+		const link = { name, cuuid };
+		const urlJoined = `${server_url}/joined/${cuuid}`;
 
 		axios.post(urlToggle, link, { headers: defaultHeader })
 		.then(res => { 
@@ -125,10 +126,10 @@ export default class Riverboat extends Component {
 	}
 
 	removePlayer = (name) => {
-		let cuuid = this.state.activeCircle.uuid;
-		let link = { name, cuuid };
-		let urlLeave = "http://localhost:7878/leave"
-		let urlJoined = "http://localhost:7878/joined/" + cuuid;
+		const cuuid = this.state.activeCircle.uuid;
+		const link = { name, cuuid };
+		const urlLeave = `${server_url}/leave`
+		const urlJoined = `${server_url}/joined/${cuuid}`;
 
 		axios.post(urlLeave, link, { headers: defaultHeader })
 		.then(res => { 
@@ -141,9 +142,9 @@ export default class Riverboat extends Component {
 
 	// add random player
 	addRandom = () =>  {
-		let cuuid = this.state.activeCircle.uuid;
-		let urlAdd = "http://localhost:7878/add_random/" + cuuid;
-		let urlJoined = "http://localhost:7878/joined/" + cuuid;
+		const cuuid = this.state.activeCircle.uuid;
+		const urlAdd = `${server_url}/add_random/${cuuid}`;
+		const urlJoined = `${server_url}/joined/${cuuid}`;
 
 		axios.post(urlAdd, { headers: defaultHeader })
 		.then(res => { 
@@ -159,9 +160,9 @@ export default class Riverboat extends Component {
 	}
 
 	calculate = () => {
-		let { activeSpace } = this.state;
-		let urlCalc = "http://localhost:7878/calc";
-		let urlPayouts ="http://localhost:7878/payouts/" + activeSpace.uuid;
+		const { activeSpace } = this.state;
+		const urlCalc = `${server_url}/calc`;
+		const urlPayouts =`${server_url}/payouts/${activeSpace.uuid}`;
 
 		axios.post(urlCalc, activeSpace, { headers: defaultHeader })
 		.then(res => { 
