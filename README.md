@@ -1,11 +1,9 @@
 # (riverboat)
 ## A Rust server that scores predictions against each other and automatically calculates payouts for each player.
 
-React / MUI
+React / MUI Frontend
 
-Rust
-
-Neo4j / Cypher
+Rust / Neo4j Backend
 
 ![Demo](/../media/gif/hero.gif?raw=true "Demo")
 
