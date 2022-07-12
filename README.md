@@ -5,9 +5,9 @@ React / MUI Frontend
 
 Rust / Neo4j Backend
 
-![Pitch Demo](https://vimeo.com/manage/videos/728569619/10ce03d124)
+[Pitch Demo](https://vimeo.com/manage/videos/728569619/10ce03d124)
 
-![Technical Demo](https://vimeo.com/manage/videos/728569658/8de7163ea9)
+[Technical Demo](https://vimeo.com/manage/videos/728569658/8de7163ea9)
 
 ![Demo](/../media/gif/hero.gif?raw=true "Demo")
 
