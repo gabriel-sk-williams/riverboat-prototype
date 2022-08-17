@@ -1,5 +1,5 @@
 # (riverboat)
-## A Rust server that scores predictions against each other and automatically calculates payouts for each player.
+## A decentralized prediction aggregator that calculates payouts on a Rust server.
 
 React / MUI Frontend
 
